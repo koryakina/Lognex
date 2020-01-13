@@ -1,4 +1,4 @@
-package UItest;
+package lognex;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
