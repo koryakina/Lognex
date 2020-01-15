@@ -1,6 +1,6 @@
 package lognex;
 
-import org.junit.Test;
+import org.junit.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,7 +9,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 
-@SuppressWarnings("deprecation")
 
 public class TestLinkedHashMap {
 

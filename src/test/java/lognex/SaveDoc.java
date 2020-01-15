@@ -14,7 +14,7 @@ import static junit.framework.TestCase.assertEquals;
 public class SaveDoc {
 
     @Test
-    public void testSelenium() {
+    public void SaveDocument() {
         String startUrl = "https://online-sklad-2.testms.lognex.ru/";
         String email = "dk@dkg1.ru";
 
