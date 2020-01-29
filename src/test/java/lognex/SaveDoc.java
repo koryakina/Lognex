@@ -9,27 +9,26 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 public class SaveDoc {
 
     @Test
     public void SaveDocument() {
         String startUrl = "https://online-sklad-2.testms.lognex.ru/";
-        String email = "dk@dkg1.ru";
-
+        String randomString= RandomStringUtils.randomAlphanumeric(10).toUpperCase();
+        
         WebDriver driver = new ChromeDriver();
         driver.get(startUrl);
         WebDriverWait waitLoad = new WebDriverWait(driver, 3000);
 
-        driver.findElement(By.id("reglink")).click();
-        WebElement emailInput = driver.findElement(By.xpath("//input[@id='email']"));
-        emailInput.sendKeys (email);
-        WebElement companylInput = driver.findElement(By.xpath("//input[@id='company']"));
+        RegisterPage regPg = new RegisterPage();
+        regPg.driver = driver;
+        regPg.email="dk@dkg1.ru";
+        regPg.company=randomString;
 
-        String randomString= RandomStringUtils.randomAlphanumeric(10).toUpperCase();
-        companylInput.sendKeys(randomString);
-        driver.findElement(By.id("submit-text")).click();
+        regPg.downloadRegisterPage("reglink");
+        regPg.feelRegisterPage();
+        regPg.submitRegisterPage();
+
 
         WebDriverWait waitLoad2 = new WebDriverWait(driver, 3000);
         waitLoad.until(ExpectedConditions.visibilityOfElementLocated(
@@ -46,9 +45,7 @@ public class SaveDoc {
         WebElement productInput = driver.findElement(By.xpath("//input[@class= 'gwt-TextBox field name b-validation-field']"));
         productInput.sendKeys("Tovar");
 
-
         driver.findElement(By.xpath("//span[text() = 'Сохранить']")).click();
-
 
         WebDriverWait waitLoad4 = new WebDriverWait(driver, 3000);
         waitLoad.until(ExpectedConditions.visibilityOfElementLocated(
@@ -64,16 +61,12 @@ public class SaveDoc {
         ));
         driver.findElement(By.xpath("(//div[@class = 'selectorPair-wrapper tutorial-counter-party-field']//div[@class = 'border-box']/input)[1]")).click();
 
-
-
         WebDriverWait waitLoad7 = new WebDriverWait(driver, 3000);
         waitLoad.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//div[@title = 'ООО \"Поставщик\"']")
         ));
 
         driver.findElement(By.xpath("//div[@title = 'ООО \"Поставщик\"']")).click();
-
-
 
         WebElement docProductInput = driver.findElement(By.xpath("//input[@class = 'gwt-TextBox with-placeholder tutorial-step-consignment-selector']"));
         docProductInput.sendKeys("Tovar");
@@ -151,5 +144,7 @@ public class SaveDoc {
 
 
     }
+
+
 }
 
