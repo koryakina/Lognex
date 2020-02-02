@@ -1,11 +1,14 @@
 package lognex;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class StartPage {
-    public static WebDriver driver;
+    private static WebDriver driver;
+
+    public StartPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void startPage(String startUrl){
         driver.get(startUrl);

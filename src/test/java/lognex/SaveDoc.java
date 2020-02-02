@@ -2,45 +2,38 @@ package lognex;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SaveDoc {
 
     @Test
-    public void SaveDocument() {
+    public void saveDocument() {
         String startUrl = "https://online-sklad-2.testms.lognex.ru/";
         String randomString = RandomStringUtils.randomAlphanumeric(10).toUpperCase();
 
         WebDriver driver = new ChromeDriver();
-        StartPage.driver = driver;
-        StartPage stpage = new StartPage();
-        stpage.startPage(startUrl);
+        StartPage startPage = new StartPage(driver);
+        startPage.startPage(startUrl);
 
-        RegisterPage regPg = new RegisterPage();
-        regPg.email="dk@dkg1.ru";
-        regPg.company=randomString;
+        RegisterPage registerPage = new RegisterPage("dk@dkg1.ru", randomString);
 
-        regPg.downloadRegisterPage("reglink");
-        regPg.feelRegisterPage();
-        regPg.submitRegisterPage();
+        registerPage.downloadRegisterPage("reglink", driver);
+        registerPage.feelRegisterPage(driver);
+        registerPage.submitRegisterPage(driver);
 
-        CreateGoods crtgd = new CreateGoods();
-        crtgd.gotogoods();
-        crtgd.createGood();
+        CreateGoodsPage createGoods = new CreateGoodsPage();
+        createGoods.gotoGoods(driver);
+        createGoods.createGood(driver);
 
-        Purchaseorder prchord = new Purchaseorder();
-        prchord.gotoPurchaseorder();
-        prchord.createPurchordPostavsik();
-        prchord.goodSelector();
-        prchord.dateSelector();
-        prchord.projectSelector();
-        prchord.createGood();
-        prchord.createDocsupply();
+        PurchaseorderPage purchaseorder = new PurchaseorderPage();
+        purchaseorder.gotoPurchaseorder(driver);
+        purchaseorder.createPurchordPostavsik(driver);
+        purchaseorder.goodSelector(driver);
+        purchaseorder.dateSelector(driver);
+        purchaseorder.projectSelector(driver);
+        purchaseorder.createGood(driver);
+        purchaseorder.createDocsupply(driver);
 
     }
 

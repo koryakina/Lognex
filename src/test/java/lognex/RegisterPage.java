@@ -7,24 +7,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegisterPage {
-    public String email;
-    public String company;
+    private String email;
+    private String company;
 
-    public void downloadRegisterPage(String elementID){
-        WebDriverWait waitLoad = new WebDriverWait(StartPage.driver, 3000);
-        StartPage.driver.findElement(By.id(elementID)).click();
+    public RegisterPage (String email, String company) {
+        this.email = email;
+        this.company = company;
     }
 
-    public void feelRegisterPage(){
-        WebElement emailInput = StartPage.driver.findElement(By.xpath("//input[@id='email']"));
+    public void downloadRegisterPage(String elementID, WebDriver driver){
+        WebDriverWait waitLoad = new WebDriverWait(driver, 3000);
+        driver.findElement(By.id(elementID)).click();
+    }
+
+    public void feelRegisterPage(WebDriver driver){
+        WebElement emailInput = driver.findElement(By.xpath("//input[@id='email']"));
         emailInput.sendKeys (email);
 
-        WebElement companylInput = StartPage.driver.findElement(By.xpath("//input[@id='company']"));
+        WebElement companylInput = driver.findElement(By.xpath("//input[@id='company']"));
         companylInput.sendKeys(company);
 
     }
 
-    public void submitRegisterPage(){
-        StartPage.driver.findElement(By.id("submit-text")).click();
+    public void submitRegisterPage(WebDriver driver){
+        driver.findElement(By.id("submit-text")).click();
     }
 }
