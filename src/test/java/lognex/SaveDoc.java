@@ -16,24 +16,24 @@ public class SaveDoc {
         StartPage startPage = new StartPage(driver);
         startPage.startPage(startUrl);
 
-        RegisterPage registerPage = new RegisterPage("dk@dkg1.ru", randomString);
+        RegisterPage registerPage = new RegisterPage("dk@dkg1.ru", randomString, driver);
 
-        registerPage.downloadRegisterPage("reglink", driver);
-        registerPage.feelRegisterPage(driver);
-        registerPage.submitRegisterPage(driver);
+        registerPage.downloadRegisterPage("reglink");
+        registerPage.feelRegisterPage();
+        registerPage.submitRegisterPage();
 
-        CreateGoodsPage createGoods = new CreateGoodsPage();
-        createGoods.gotoGoods(driver);
-        createGoods.createGood(driver);
+        CreateGoodsPage createGoods = new CreateGoodsPage(driver);
+        createGoods.gotoGoods();
+        createGoods.createGood();
 
-        PurchaseorderPage purchaseorder = new PurchaseorderPage();
-        purchaseorder.gotoPurchaseorder(driver);
-        purchaseorder.createPurchordPostavsik(driver);
-        purchaseorder.goodSelector(driver);
-        purchaseorder.dateSelector(driver);
-        purchaseorder.projectSelector(driver);
-        purchaseorder.createGood(driver);
-        purchaseorder.createDocsupply(driver);
+        PurchaseorderPage purchaseorder = new PurchaseorderPage(driver);
+        purchaseorder.gotoPurchaseorder();
+        purchaseorder.createPurchordPostavsik();
+        purchaseorder.goodSelector();
+        purchaseorder.dateSelector();
+        purchaseorder.projectSelector();
+        purchaseorder.createGood();
+        purchaseorder.createDocsupply();
 
     }
 

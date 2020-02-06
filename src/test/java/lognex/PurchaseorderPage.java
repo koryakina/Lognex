@@ -8,7 +8,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PurchaseorderPage {
-    public void gotoPurchaseorder(WebDriver driver){
+    private final WebDriver driver;
+
+    public PurchaseorderPage ( WebDriver driver){
+        this.driver = driver;
+    }
+
+    public void gotoPurchaseorder(){
         WebDriverWait waitLoad4 = new WebDriverWait(driver, 3000);
         waitLoad4.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[text() =  'Закупки']")
@@ -18,7 +24,7 @@ public class PurchaseorderPage {
         driver.findElement(By.xpath("//span[text() = 'Заказ']")).click();
 
     }
-    public void createPurchordPostavsik(WebDriver driver){
+    public void createPurchordPostavsik(){
         WebDriverWait waitLoad5 = new WebDriverWait(driver, 3000);
         waitLoad5.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("(//div[@class = 'selectorPair-wrapper tutorial-counter-party-field']//div[@class = 'border-box']/input)[1]")
@@ -30,7 +36,7 @@ public class PurchaseorderPage {
         ));
         driver.findElement(By.xpath("//div[@title = 'ООО \"Поставщик\"']")).click();
     }
-    public void goodSelector(WebDriver driver){
+    public void goodSelector(){
         WebElement docProductInput = driver.findElement(By.xpath("//input[@class = 'gwt-TextBox with-placeholder tutorial-step-consignment-selector']"));
         docProductInput.sendKeys("Tovar");
         WebDriverWait waitLoad6 = new WebDriverWait(driver, 3000);
@@ -45,12 +51,12 @@ public class PurchaseorderPage {
         ));
         driver.findElement(By.xpath("//span[text() = \"Создать\"]")).click();
     }
-    public void dateSelector(WebDriver driver){
+    public void dateSelector(){
         driver.findElement(By.xpath("//div[@class = 'b-calendar']//input")).click();
         WebElement dateInput = driver.findElement(By.xpath("//div[@class = 'b-calendar']//input"));
         dateInput.sendKeys("11.01.2020 11:33");
     }
-    public void projectSelector(WebDriver driver){
+    public void projectSelector(){
         driver.findElement(By.xpath("(//div[@class = 'add-button'])[5]/div")).click();
         WebDriverWait waitLoad10 = new WebDriverWait(driver, 3000);
         waitLoad10.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//tr[@class]//input [@type = 'text'])[1]")
@@ -65,7 +71,7 @@ public class PurchaseorderPage {
         driver.findElement(By.xpath("//span[text() = \"Создать\"]")).click();
 
     }
-    public void createGood(WebDriver driver){
+    public void createGood(){
         String randomString= RandomStringUtils.randomAlphanumeric(10).toUpperCase();
 
         driver.findElement(By.xpath("//input[@class = 'gwt-TextBox with-placeholder tutorial-step-consignment-selector']")).click();
@@ -84,7 +90,7 @@ public class PurchaseorderPage {
         driver.findElement(By.xpath("//span[text() = \"Создать\"]")).click();
 
     }
-    public void createDocsupply(WebDriver driver){
+    public void createDocsupply(){
         driver.findElement(By.xpath("//span[text() = 'Создать документ']")).click();
         driver.findElement(By.xpath("//td[text() = 'Приемка']")).click();
         WebDriverWait waitLoad14 = new WebDriverWait(driver, 3000);
