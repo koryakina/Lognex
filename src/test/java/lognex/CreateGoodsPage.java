@@ -14,8 +14,8 @@ public class CreateGoodsPage {
     }
 
     public void gotoGoods(){
-        WebDriverWait waitLoad2 = new WebDriverWait(driver, 3000);
-        waitLoad2.until(ExpectedConditions.visibilityOfElementLocated(
+        WebDriverWait waitLoad99 = new WebDriverWait(driver, 3000);
+        waitLoad99.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[text() =  'Товары']")
         ));
         driver.findElement(By.xpath("//span[text() =  'Товары']")).click();
